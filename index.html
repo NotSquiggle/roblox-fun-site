@@ -3,38 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Fun Site</title>
+    <title>Roblox Fun Zone</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            color: #333;
+            font-family: 'Trebuchet MS', sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
             text-align: center;
+            margin: 0;
+            padding: 0;
         }
-        .container {
-            max-width: 900px;
-            margin: auto;
+        header {
+            background-color: #ff4500;
+            padding: 20px 0;
         }
         h1 {
-            color: #ff4500;
+            margin: 0;
+            font-size: 2.5em;
         }
-        button {
-            padding: 10px 20px;
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+        .game-section {
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #ffdd57;
+        }
+        .game-link {
+            display: inline-block;
+            padding: 15px 20px;
             background-color: #008cba;
             color: white;
-            border: none;
-            cursor: pointer;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 10px;
         }
-        button:hover {
+        .game-link:hover {
             background-color: #005f5f;
+        }
+        .chat-container {
+            background-color: #444444;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+        footer {
+            background-color: #ff4500;
+            color: white;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
+
+    <header>
+        <h1>Roblox Fun Zone</h1>
+        <p>Explore awesome Roblox games and chat with the community!</p>
+    </header>
+
     <div class="container">
-        <h1>Welcome to the Roblox Fun Site!</h1>
-        <p>Explore games, chat with friends, and discover fun Roblox features.</p>
-        <button onclick="alert('Let\'s explore!')">Start Exploring</button>
+        <section class="game-section">
+            <h2>Top Roblox Games to Check Out!</h2>
+            <a href="https://www.roblox.com/games/920587237/Adopt-Me" class="game-link" target="_blank">Adopt Me</a>
+            <a href="https://www.roblox.com/games/155615604/Bloxburg" class="game-link" target="_blank">Welcome to Bloxburg</a>
+            <a href="https://www.roblox.com/games/2753915549/BedWars" class="game-link" target="_blank">BedWars</a>
+        </section>
+
+        <section class="chat-container">
+            <h2>Join the Community Chat!</h2>
+            <iframe src="https://discord.com/widget?id=your-discord-server-id&theme=dark"></iframe>
+        </section>
+
+        <section class="game-section">
+            <h2>Take a Fun Roblox Quiz!</h2>
+            <p id="quiz-question">What is the name of the in-game currency in Roblox?</p>
+            <button onclick="checkAnswer('a')">A) Coins</button>
+            <button onclick="checkAnswer('b')">B) Robux</button>
+            <button onclick="checkAnswer('c')">C) Gems</button>
+            <p id="quiz-result"></p>
+        </section>
     </div>
+
+    <footer>
+        <p>© 2024 Roblox Fun Zone. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function checkAnswer(answer) {
+            var result = document.getElementById("quiz-result");
+            if (answer === 'b') {
+                result.textContent = "Correct! The currency is Robux.";
+                result.style.color = "limegreen";
+            } else {
+                result.textContent = "Oops! Try again.";
+                result.style.color = "red";
+            }
+        }
+    </script>
+
 </body>
 </html>
