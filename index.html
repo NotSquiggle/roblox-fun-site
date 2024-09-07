@@ -7,14 +7,14 @@
     <style>
         /* General Styling */
         body {
-            font-family: 'Comic Sans MS', sans-serif; /* Classic 2000s font choice */
-            background: linear-gradient(135deg, #00ffff, #ff69b4); /* Bright, early 2000s gradient */
+            font-family: 'Comic Sans MS', sans-serif;
+            background: linear-gradient(135deg, #00ffff, #ff69b4);
             color: #ffffff;
             text-align: center;
             margin: 0;
             padding: 0;
             background-attachment: fixed;
-            animation: fadeInBg 4s ease-in-out infinite alternate; /* Gentle fade animation for background */
+            animation: fadeInBg 4s ease-in-out infinite alternate;
         }
 
         @keyframes fadeInBg {
@@ -90,7 +90,7 @@
             background-color: #444444;
             padding: 20px;
             border-radius: 8px;
-            border: 2px dashed #00ff00; /* Early 2000s pixel effect */
+            border: 2px dashed #00ff00;
             animation: popUp 2s ease-out;
         }
 
@@ -104,7 +104,7 @@
             background-color: #ff4500;
             color: white;
             padding: 10px;
-            font-family: 'Courier New', monospace; /* 2000s coding font */
+            font-family: 'Courier New', monospace;
             animation: fadeIn 2s ease-in;
         }
 
@@ -178,6 +178,32 @@
                 opacity: 1;
             }
         }
+
+        /* Roblox logo animation */
+        .roblox-logo-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .roblox-logo {
+            position: absolute;
+            width: 100px;
+            animation: logoSlide 5s linear infinite;
+        }
+
+        @keyframes logoSlide {
+            0% {
+                transform: translate(-200px, -200px);
+            }
+            100% {
+                transform: translate(100vw, 100vh);
+            }
+        }
     </style>
 </head>
 <body>
@@ -190,9 +216,9 @@
     <div class="container">
         <section class="game-section">
             <h2>Top Roblox Games to Check Out!</h2>
-            <a href="https://www.roblox.com/games/920587237/Adopt-Me" class="game-link" target="_blank">Adopt Me</a>
-            <a href="https://www.roblox.com/games/185655149/Welcome-to-Bloxburg" class="game-link" target="_blank">Welcome to Bloxburg</a>
-            <a href="https://www.roblox.com/games/6872265039/BedWars-LUCKY-BLOCKS" class="game-link" target="_blank">BedWars</a>
+            <a href="https://www.roblox.com/games/920587237/Adopt-Me" class="game-link" onclick="confirmLeave(event)">Adopt Me</a>
+            <a href="https://www.roblox.com/games/185655149/Welcome-to-Bloxburg" class="game-link" onclick="confirmLeave(event)">Welcome to Bloxburg</a>
+            <a href="https://www.roblox.com/games/6872265039/BedWars-LUCKY-BLOCKS" class="game-link" onclick="confirmLeave(event)">BedWars</a>
         </section>
 
         <section class="chat-container">
@@ -214,7 +240,21 @@
         <p>© 2024 Roblox Fun Zone. All Rights Reserved.</p>
     </footer>
 
+    <div class="roblox-logo-banner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Roblox_Logo_2022.svg" class="roblox-logo" style="animation-delay: 0s;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Roblox_Logo_2022.svg" class="roblox-logo" style="animation-delay: 1.5s;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Roblox_Logo_2022.svg" class="roblox-logo" style="animation-delay: 3s;">
+    </div>
+
     <script>
+        function confirmLeave(event) {
+            event.preventDefault(); // Stop the link from opening immediately
+            if (confirm("Are you sure you want to break the immersion?")) {
+                // If they click "OK", follow the link
+                window.location.href = event.target.href;
+            }
+        }
+
         function checkAnswer(answer) {
             var result = document.getElementById("quiz-result");
             if (answer === 'b') {
