@@ -13,7 +13,7 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            background-attachment: fixed;
+            background-attachment: ;
             animation: fadeInBg 4s ease-in-out infinite alternate;
         }
 
@@ -178,34 +178,40 @@
                 opacity: 1;
             }
         }
+.roblox-logo-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+    display: none; /* Initially hidden */
+}
 
-        /* Roblox logo animation */
-        .roblox-logo-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 999;
-        }
+.roblox-logo {
+    position: absolute;
+    width: 100px;
+    animation: logoSlide 5s linear infinite;
+}
 
-        .roblox-logo {
-            position: absolute;
-            width: 100px;
-            animation: logoSlide 5s linear infinite;
-        }
+@keyframes logoSlide {
+    0% {
+        transform: translate(-200px, -200px);
+    }
+    100% {
+        transform: translate(100vw, 100vh);
+    }
+}
 
-        @keyframes logoSlide {
-            0% {
-                transform: translate(-200px, -200px);
-            }
-            100% {
-                transform: translate(100vw, 100vh);
-            }
-        }
     </style>
 </head>
+<div class="roblox-logo-banner">
+    <img src="roblox-logo.png" class="roblox-logo" alt="Roblox Logo">
+    <img src="roblox-logo.png" class="roblox-logo" alt="Roblox Logo">
+    <img src="roblox-logo.png" class="roblox-logo" alt="Roblox Logo">
+</div>
+
 <body>
 
     <header>
@@ -220,6 +226,35 @@
             <a href="https://www.roblox.com/games/185655149/Welcome-to-Bloxburg" class="game-link" onclick="confirmLeave(event)">Welcome to Bloxburg</a>
             <a href="https://www.roblox.com/games/6872265039/BedWars-LUCKY-BLOCKS" class="game-link" onclick="confirmLeave(event)">BedWars</a>
         </section>
+<script>
+    function confirmLeave(event) {
+        event.preventDefault(); // Stop the link from opening immediately
+
+        if (confirm("Are you sure you want to break the immersion?")) {
+            // Start the Roblox logo animation
+            startRobloxLogoAnimation();
+            
+            // Delay the link opening by 2 seconds to let the animation play
+            setTimeout(function() {
+                window.location.href = event.target.href;
+            }, 2000);
+        }
+    }
+
+    function startRobloxLogoAnimation() {
+        const banner = document.querySelector('.roblox-logo-banner');
+        banner.style.display = 'block'; // Show the banner for the animation
+
+        setTimeout(() => {
+            banner.style.display = 'none'; // Hide the banner after 2 seconds
+        }, 2000); // Match this to the animation duration
+    }
+
+    // Attach the event listener to all game links
+    document.querySelectorAll('.game-link').forEach(link => {
+        link.addEventListener('click', confirmLeave);
+    });
+</script>
 
         <section class="chat-container">
             <h2>Join the Community Chat!</h2>
